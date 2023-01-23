@@ -79,3 +79,5 @@ mad_libs(adjective = "", place = "", noun = "")
   plot(cars, pch =2)
   boxplot(formula = mpg ~ cyl, data = mtcars)
   
+  setwd('Task_02')
+  
