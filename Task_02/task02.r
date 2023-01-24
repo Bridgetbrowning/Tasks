@@ -67,10 +67,23 @@ dayID2 <- apply(Data2, 1, function(x) paste(x[1:3], collapse="-"))
 dateID2 <- sapply(dayID2, as.Date, format="%Y-%m-%d", origin = "2022-04-12")
 Data2$age <- dateID2 - dateID2[which(Data2$event == "birth")]
 
+
 cMassRows <- which(Data2[, 'event'] == 'trait_mass')
 cyrusMass <- Data2[cMassRows, "value"]
 cyrusAges <- Data2[cMassRows, "age"]
+
+MassRows <- which(Data1[, 'event'] == 'trait_mass')
+berenMass <- Data1[MassRows, "value"]
+berenAges <- Data1[MassRows, "age"]
+
+pdf("002_massPlot.pdf")
+
 plot(berenAges, berenMass, col='red', pch=19)
 points(cyrusAges, cyrusMass/1000, col='blue', pch=16)
 
-I did not get to attempt the extra credit but I think your baby will weigh 27.2 pounds
+dev.off()
+
+#I did not get to attempt the extra credit but I think your baby will weigh 27.2 pounds
+
+
+
