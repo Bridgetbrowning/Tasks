@@ -7,7 +7,7 @@ A * 2
 B <- c(A, 5, 5)
 B
 B * 2
-'B' * 2
+#'B' * 2
 B <- c(A, 6, 10)
 B * 2
 C <- c(B, 6, 10)
@@ -51,4 +51,23 @@ MatGrandpa <- makeFounder("grandpa_mom")
 PatGrandma <- makeFounder("grandma_da")
 PatGrandpa <- makeFounder("grandpa_da")
 Alan <- makeBaby(PatGrandma, PatGrandpa)
-Brenda <- 
+
+Focus <- makeBaby(Brenda, Alan)
+ToMom <- length(grep("mom" , Focus)) / length( Focus )
+ToMomMom <- length(grep("grandma_mom" , Focus)) / lenght( Focus )
+ToMomMom <- length(grep("grandma_mom", Focus)) / length( Focus )
+ToMomDad <- length(grep("grandpa_mom", Focus)) / length( Focus )
+Sibling_01 <- makeBaby(Brenda, Alan)
+ToSib <- length( intersect( Focus, Sibling_01)) / length( Focus )
+ManySiblings <- replicate( 1e3, length( intersect( Focus, makeBaby(Brenda, Alan))) / length( Focus ))
+
+quantile(ManySiblings)
+mean(ManySiblings)
+
+pdf("003_relatePlot")
+range(Focus, ManySiblings)
+plot(range(Focus), range(ManySiblings))
+hist(ManySiblings , xlab="loci", ylab="frequency")
+plot(Focus, ManySiblings)
+dev.off()
+
