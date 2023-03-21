@@ -1,10 +1,10 @@
 setwd("C:\\Users\\bdb00009\\Desktop\\Evolution\\Tasks\\Task_07")
-text.strings<-
+text.string <-
   "(((((((cow, pig) , whale) ,(bat, (lemur ,human))) , (robin ,iguana)) , coelacanth
 ) ,(gold_fish , trout)) ,shark);"
-vert.tree <-read.tree(text=text. string)
+vert.tree <-read.tree(text=text.string)
 plot(vert.tree, edge.width=2)
-nodelabel(frame="circle", bg='white', cex=1)
+nodelabels(frame="circle", bg='white', cex=1)
 vert.tree
 str(vert.tree)
 tree <- read.tree(text="(((A,B),(C,D)),E);")
@@ -13,7 +13,8 @@ tiplabels(frame="circle", bg='lightblue', cex=1)
 nodelabels(frame="circle", bg='white', cex=1)
 tree$tip.label
 tree$edge
-AnolisTree <- force.ultrametric(read.tree("https://jonsmitchell.com/data/anolis.tre"))                                          anolis.tre"))
+AnolisTree <- force.ultrametric(read.tree('https://jonsmitchell.com/data/anolis.tree'))
+
 par(las=1)
 hist(AnolisTree$edge.length, col='black', borders='white', main="", xlab="edge lengths for the Anolis tree", ylim=c(0,50), xlim=c(0,6))
 tipEdges <- which(AnolisTree$edge[,2] <= Ntip(AnolisTree))
@@ -24,11 +25,78 @@ plot(AnolisTree, cex=0.25)
 Labs <- sapply(AnolisTree$edge.length, round, digits=2)
 edgelabels(text=Labs, cex=0.25)
 ?plot.phylo
+plot(AnolisTree, type = "phylogram", use.edge.length = TRUE,
+     node.pos = NULL, show.tip.label = F,
+     show.node.label = FALSE, edge.color = NULL, edge.width
+     = NULL, edge.lty = NULL, node.color = NULL, node.width
+     = NULL, node.lty = NULL, font = 3, cex = 0.25,
+     adj = NULL, srt = 0, no.margin = FALSE, root.edge =
+       FALSE, label.offset = 0, underscore = FALSE, x.lim =
+       NULL, y.lim = NULL, direction = "rightwards", lab4ut =
+       NULL, tip.color = par("col"), plot = TRUE, rotate.tree
+     = 0, open.angle = 0, node.depth = 1, align.tip.label =
+       FALSE)
+plot(AnolisTree, type = "fan", use.edge.length = TRUE,
+     node.pos = NULL, show.tip.label = F,
+     show.node.label = FALSE, edge.color = NULL, edge.width
+     = NULL, edge.lty = NULL, node.color = NULL, node.width
+     = NULL, node.lty = NULL, font = 3, cex = 0.25,
+     adj = NULL, srt = 0, no.margin = FALSE, root.edge =
+       FALSE, label.offset = 0, underscore = FALSE, x.lim =
+       NULL, y.lim = NULL, direction = "rightwards", lab4ut =
+       NULL, tip.color = par("col"), plot = TRUE, rotate.tree
+     = 0, open.angle = 0, node.depth = 1, align.tip.label =
+       FALSE)
+
+
+plot(AnolisTree, type = "fan", use.edge.length = TRUE,
+     node.pos = NULL, show.tip.label = F,
+     show.node.label = FALSE, edge.color = "red", edge.width
+     = NULL, edge.lty = NULL, node.color = NULL, node.width
+     = NULL, node.lty = NULL, font = 3, cex = 0.25,
+     adj = NULL, srt = 0, no.margin = FALSE, root.edge =
+       FALSE, label.offset = 0, underscore = FALSE, x.lim =
+       NULL, y.lim = NULL, direction = "rightwards", lab4ut =
+       NULL, tip.color = "red", plot = TRUE, rotate.tree
+     = 0, open.angle = 0, node.depth = 1, align.tip.label =
+       FALSE)
+plot(AnolisTree, type = "phylogram", use.edge.length = TRUE,
+     node.pos = NULL, show.tip.label = F,
+     show.node.label = FALSE, edge.color = "red", edge.width
+     = NULL, edge.lty = NULL, node.color = NULL, node.width
+     = NULL, node.lty = NULL, font = 3, cex = 0.25,
+     adj = NULL, srt = 0, no.margin = FALSE, root.edge =
+       FALSE, label.offset = 0, underscore = FALSE, x.lim =
+       NULL, y.lim = NULL, direction = "rightwards", lab4ut =
+       NULL, tip.color = par("col"), plot = TRUE, rotate.tree
+     = 0, open.angle = 0, node.depth = 1, align.tip.label =
+       FALSE)
+plot.phylo(AnolisTree, type="phylogram", cex=0.25, edge.color='red')
+eCols <- rep("black", 162)
+eCols[tipEdges]<- "red"
+plot(AnolisTree, cex=0.25, edge.col=eCols)
+str(AnolisTree)
+
+plot(AnolisTree, type = "phylogram", use.edge.length = TRUE,
+     node.pos = NULL, show.tip.label = F,
+     show.node.label = FALSE, edge.color = "red", edge.width
+     = NULL, edge.lty = NULL, node.color = NULL, node.width
+     = NULL, node.lty = NULL, font = 3, cex = 0.25,
+     adj = NULL, srt = 0, no.margin = FALSE, root.edge =
+       FALSE, label.offset = 0, underscore = FALSE, x.lim =
+       NULL, y.lim = NULL, direction = "rightwards", lab4ut =
+       NULL, tip.color = par("col"), plot = TRUE, rotate.tree
+     = 0, open.angle = 0, node.depth = 1, align.tip.label =
+       FALSE)
+
+
+
+
 ltt(AnolisTree)
 abline(0, 1, lwd=2, col='red', lty=2)
 fit.bd()
 plot(tree, type="fan")
-data <- read.csv("https://jonsmitchell.com/data/svl.csv", stringsAsFactors=F , row.names=1")
+data <- read.csv("https://jonsmitchell.com/data/svl.csv", stringsAsFactors=F , row.names=1)
 svl <- setNames(data$svl, rownames(data))
 Ancestors <- fastAnc(tree,svl, vars=TRUE, CI=TRUE)
 par(mar=c(0.1,0.1,0.1,0.1))
