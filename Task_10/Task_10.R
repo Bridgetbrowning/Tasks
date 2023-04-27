@@ -1,0 +1,23 @@
+setwd("C:\\Users\\bdb00009\\Desktop\\Evolution\\Tasks\\Task_10")
+rnorm(100, mean = 0, sd = sqrt(4))
+x <- rnorm(100, mean = 0, sd= sqrt(4))
+x <- rnorm(100, mean = 0, sd = sqrt(4))
+y <- 5*x + 2 + runif(100, min= 0, max = 0.1)
+model <- lm(y ~ x)
+slope <- coef(model)[2]
+intercept <- coef(model)[1]
+cat("Slope", slope, "\n")
+cat("Y-intercept", intercept, "\n")
+slopes <- c()
+intercepts <- c()
+random_nums <- c()
+for(i in 1:100){
+  x <- rnorm(100, mean = 0, sd = sqrt(4))
+y <- 5*x + 2 + runif(100, min = 0, max = 0.1)
+slopes[i] <- coef(model)[2]
+intercepts[i] <- coef(model)[1]
+x <- x * random_nums[i]
+}
+cat("Mean slope:", mean(slopes), "\n")
+cat("Mean y-intercept:", mean(intercepts), "\n")
+cat("Mean random number:", mean(random_nums), "\n")
