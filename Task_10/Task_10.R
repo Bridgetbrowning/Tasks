@@ -21,3 +21,21 @@ x <- x * random_nums[i]
 cat("Mean slope:", mean(slopes), "\n")
 cat("Mean y-intercept:", mean(intercepts), "\n")
 cat("Mean random number:", mean(random_nums), "\n")
+
+#EC
+n <- 10000
+prize <- sample(c("A", "B", "C"), size = n, replace = TRUE)
+doorOpened <- ifelse(prize=="A", sample(c("B", "C"), size=n, replace=TRUE), ifelse(prize=="B","C", "B"))
+doorUnopened <- ifelse(doorOpened=="B", "C", "B")
+NotSwitchingWinChance <- sum(prize==doorUnopened)/n
+SwitchingWinChance <- sum(prize==doorUnopened)/n
+?barplot
+pdf("plot10_ec01.pdf")
+barplot(WinChance, names.arg=c("Not Switching Doors", "Switching Doors"), ylab="Chance of Winning", main="Monty Hall Odds of Winning Grand Prize", col="blue")
+dev.off()
+
+#EC
+install.packages("meme")
+library(meme)
+image <- "~/Desktop/evo meme image.jpg"
+meme(image, "evo meme image", size=2)
